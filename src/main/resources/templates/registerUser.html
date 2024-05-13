@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org" lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Register User</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        form {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 400px;
+            margin: auto;
+        }
+
+        h1 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+        }
+
+        input[type="text"],
+        input[type="password"] {
+            width: calc(100% - 16px);
+            padding: 10px;
+            margin-bottom: 16px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+
+        button[type="submit"] {
+            background-color: #4caf50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            padding: 12px;
+            border-radius: 4px;
+        }
+
+        button[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            display: block;
+            text-align: center;
+            margin-top: 16px;
+            color: #007bff;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+<h1>Create a New User</h1>
+
+<form action="/login/register/user" th:action="@{/login/register/user}" th:object="${MyUser}" method="post">
+    <label for="fname">First Name:</label>
+    <input type="text" id="fname" th:field="*{fname}"/>
+
+    <label for="sname">Last Name:</label>
+    <input type="text" id="sname" th:field="*{sname}"/>
+
+    <label for="password">Password:</label>
+    <input type="password" id="password" th:field="*{password}"/>
+
+    <label for="email">Email:</label>
+    <input type="text" id="email" th:field="*{email}"/>
+
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" id="phoneNumber" th:field="*{phoneNumber}"/>
+
+    <label for="weight">Weight:</label>
+    <input type="text" id="weight" th:field="*{weight}"/>
+
+    <label for="height">Height:</label>
+    <input type="text" id="height" th:field="*{height}"/>
+
+    <label for="age">Age:</label>
+    <input type="text" id="age" th:field="*{age}"/>
+
+    <label for="gender">Gender:</label>
+    <input type="text" id="gender" th:field="*{gender}"/>
+
+    <label for="activityLevel">Activity Level:</label>
+    <input type="text" id="activityLevel" th:field="*{activityLevel}"/>
+
+    <label for="goal">Goal:</label>
+    <input type="text" id="goal" th:field="*{goal}"/>
+
+    <label for="role">Role:</label>
+    <input type="text" id="role" th:field="*{role}"/>
+
+    <button type="submit">Create User</button>
+</form>
+<a href="/login">Back to Login</a>
+</body>
+</html>
