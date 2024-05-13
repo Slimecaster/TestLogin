@@ -1,11 +1,13 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Login</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            background-color: #f4f4f4;
+            background-color: #f2f2f2;
             margin: 0;
             padding: 0;
             display: flex;
@@ -15,83 +17,60 @@
         }
 
         .container {
+            max-width: 400px;
             background-color: #fff;
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        h2 {
-            text-align: center;
-            margin-bottom: 20px;
-        }
-
-        form {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-        }
-
-        label {
-            margin-bottom: 10px;
-        }
-
-        input[type="text"],
-        input[type="password"],
-        button {
+        input[type="email"], input[type="password"] {
             padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
             margin-bottom: 10px;
             width: 100%;
-            border: 1px solid #ccc;
-            border-radius: 4px;
             box-sizing: border-box;
-            font-size: 16px;
         }
 
-        button[type="submit"] {
-            background-color: #4caf50;
-            color: white;
-            border: none;
-            cursor: pointer;
+        input[type="email"]:focus, input[type="password"]:focus {
+            border-color: #007bff;
+            box-shadow: 0 0 5px rgba(0, 123, 255, 0.5);
         }
 
-        button[type="submit"]:hover {
-            background-color: #45a049;
-        }
-
-        .button {
-            text-align: center;
-            margin-top: 10px;
-        }
-
-        .button button[type="button"] {
-            background-color: #008CBA;
-            color: white;
-            border: none;
-            cursor: pointer;
-            border-radius: 4px;
+        button {
             padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            width: 100%;
         }
 
-        .button button[type="button"]:hover {
-            background-color: #005f6b;
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .error-message {
+            color: red;
+            margin-top: 10px;
         }
     </style>
 </head>
 <body>
 <div class="container">
-    <h2>Login</h2>
-    <form action="/login" method="post">
-        <label for="email">e-mailaddresse:</label>
-        <input type="text" id="email" name="email" required><br>
-        <label for="password">Password:</label>
-        <input type="password" id="password" name="password" required><br>
-        <button type="submit">Login</button>
+    <h2>Log ind</h2>
+    <form action="/login" method="POST">
+        <!-- Email input field styled like a password field -->
+        <input type="email" name="email" id="email" placeholder="Your email" required>
+        <input type="password" name="password" id="password" placeholder="Your password" required>
+        <button type="submit">Submit</button>
     </form>
-    <div class="button">
-        <a th:href="@{/login/register/user}">
-            <button type="button">Opret bruger</button>
-        </a>
+    <!-- Error message -->
+    <div class="error-message">
+        <!-- Display error message here -->
+        <p th:if="${param.error}">Forkert e-mailaddresse eller kodeord.</p>
     </div>
 </div>
 </body>

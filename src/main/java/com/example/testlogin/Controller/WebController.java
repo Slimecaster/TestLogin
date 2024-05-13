@@ -3,9 +3,14 @@ package com.example.testlogin.Controller;
 import com.example.testlogin.AuthSuccHandler;
 import com.example.testlogin.DBcontroller.Repository;
 import com.example.testlogin.Model.MyUser;
+import com.example.testlogin.Service.CustomUserDetailsService;
 import com.example.testlogin.Service.Service;
-import com.example.testlogin.Service.UserDetailsService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
+import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,13 +24,13 @@ import java.util.Optional;
 
 @Controller
 public class WebController {
-    private final UserDetailsService userDetailsService;
+    private final CustomUserDetailsService userDetailsService;
     private final Service service;
     private final Repository repository;
     private final PasswordEncoder passwordEncoder;
 
     @Autowired
-    public WebController(UserDetailsService userDetailsService, Service service, Repository repository, PasswordEncoder passwordEncoder) {
+    public WebController(CustomUserDetailsService userDetailsService, Service service, Repository repository, PasswordEncoder passwordEncoder) {
         this.userDetailsService = userDetailsService;
         this.service = service;
         this.repository = repository;
@@ -67,6 +72,7 @@ public class WebController {
     public String userCreatedSuccess() {
         return "userCreatedSuccess";
     }
+
 
 
 
